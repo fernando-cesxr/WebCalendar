@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  background-color: rgb(238, 249, 250);
+}
+tr {
+  flex: 1;
+  background-color: rgb(204, 219, 220);
+}
+tr th {
+  padding-left: 10;
+  background-color:rgb(204, 219, 220) ;
+}
+
+table tr th {
+  flex: 1;
+  background-color:rgb(204, 219, 220) ;
+}
+
+input::placeholder {
+  color: rgb(0, 50, 73);
+}
+
+.cent{
+  background-color:rgb(204, 219, 220) ;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.box {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  background-color: rgb(204, 219, 220);
+  flex: 1;
+}
