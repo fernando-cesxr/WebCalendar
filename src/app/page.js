@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar";
 export default function Home() {
   return (
     <>
-     <NavBar /> 
+     <NavBar/> 
     <div className="cent py-10 px-10 rounded-lg">
       <table>
         <tr >
