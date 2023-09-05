@@ -4,10 +4,10 @@ import NavBar from "@/components/NavBar";
 export default function Home() {
   return (
     <>
-     <NavBar/> 
+     <NavBar /> 
     <div className="cent py-10 px-10 rounded-lg">
       <table>
-        <tr >
+        <tr>
             <th className="rgb(204, 219, 220) text-indigo-900  px-4  " >Dom</th>
             <th className="rgb(204, 219, 220) text-indigo-900  px-4 ">Seg</th>
             <th className="rgb(204, 219, 220) text-indigo-900  px-4 " >Ter</th>

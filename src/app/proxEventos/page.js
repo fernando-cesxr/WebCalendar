@@ -1,24 +1,30 @@
 import NavBar from "@/components/NavBar";
+import Evento from "./proxEventos"
+
+async function getEventos(){
+  const url = "http://localhost:8080/api/eventos"
+  const resp = await fetch(url, {next: {revalidate: 0}})
+  return resp.json()
+}
 
 
-export default function Eventos() {
+export default async function Eventos() {
+
+  const data = await getEventos()
+  console.log(data)
+
   return (
     <>
-     <NavBar active={"eventos"}/>
-
-  <div className="cent rounded-lg">
-    <h1 className="text-indigo-900 font-bold m-4 text-xl">Próximos Eventos</h1>
-    <div className="bg-sky-500 p-2  rounded-lg m-20">
-      <p>Médico 15h - 15/08/2023</p>
-    </div>
-    <div className="bg-sky-500 p-2  rounded-lg m-20 scroll-mt-0">
-      <p>Cinema 19h - 19/08/2023</p>
-    </div>
-    <div className="bg-sky-500 p-2  rounded-lg m-20">
-      <p>Dentista 109h - 21/08/2023</p>
-    </div>
     
-  </div>
+      <NavBar active={"eventos"}/>
+
+        <main className="cent rounded-lg" >
+            <h1 className="text-indigo-900 font-bold m-4 text-xl">Próximos Eventos</h1>  
+            <div id="data">     
+              {data.map(evento => <Evento key={evento.id} evento={evento} />)}
+            </div>
+        </main>
+
     </>
   
   )
