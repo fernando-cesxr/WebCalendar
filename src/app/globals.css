@@ -56,3 +56,7 @@ input::placeholder {
   background-color: rgb(204, 219, 220);
   flex: 1;
 }
+
+.cor{
+  background-color: rgb(204, 219, 220);
+}

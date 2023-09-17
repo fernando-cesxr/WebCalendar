@@ -1,4 +1,6 @@
+import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
+import { PlusIcon } from '@heroicons/react/24/outline'
 
 
 export default function Home() {
@@ -64,8 +66,13 @@ export default function Home() {
       </table>
       <div>
         <p className="text-indigo-900 py-4 font-bold" >Não há eventos hoje</p>
-        <button className="bg-sky-500 text-indigo-900 my-2 p-1 rounded-lg " >Adicionar</button><br/>   
-        <input placeholder="Insira o tipo de compromisso " className="bg-sky-500 text-indigo-900 my-2 p-1 rounded-lg" ></input><br/>   
+        <div className="flex">
+          <Button className='content-center' href='/proxEventos/new'>
+            <PlusIcon className='h6 w-6 text-indigo-900 my-2 p-1'/>
+            Adicionar evento</Button>
+        </div>
+        <br/>
+        <input placeholder="Insira o tipo de compromisso " className="bg-sky-500 my-2 p-1 rounded-lg" ></input><br/>   
         <input  placeholder="Insira os detalhes" className="bg-sky-500 text-indigo-900 my-2 p-1 rounded-lg" ></input> 
       </div>
     </div>
