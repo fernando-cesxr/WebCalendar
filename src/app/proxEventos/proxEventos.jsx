@@ -8,7 +8,7 @@ export default function proxEventos({evento}){
                 <p>{evento.nome}</p>
                 <p className="ml-1">{evento.data}</p>
             <div className="invisible group-hover:visible">     
-                <DropMenu />
+                <DropMenu evento={evento}/>
             </div>
             </div>
         </>

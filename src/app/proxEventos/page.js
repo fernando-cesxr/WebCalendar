@@ -3,7 +3,7 @@ import Evento from "./proxEventos"
 
 async function getEventos(){
   const url = "http://localhost:8080/api/eventos"
-  const resp = await fetch(url, {next: {revalidate: 0}})
+  const resp = await fetch(url)
   return resp.json()
 }
 

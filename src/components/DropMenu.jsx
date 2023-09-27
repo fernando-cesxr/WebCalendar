@@ -1,19 +1,48 @@
 "use client"
 
+import { destroy } from '@/actions/eventos';
+import useToast from '@/hooks/useToast';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-export default function DropMenu() {
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useRouter } from 'next/navigation';
+
+export default function DropMenu({evento}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const { error, success } = useToast()
+  const { push } = useRouter()
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleEdit = () => {
+    setAnchorEl(null);
+    push(`/eventos/${evento.id}/edit`)
+  }
+
+  const handleDelete = () => {
+    setAnchorEl(null);
+    destroy(evento.id)
+  };
+
 
   return (
     <div>
@@ -36,8 +65,28 @@ export default function DropMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>editar</MenuItem>
-        <MenuItem onClick={handleClose}>apagar</MenuItem>
+
+<AlertDialog>
+          <AlertDialogTrigger>
+            <MenuItem>apagar</MenuItem>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Você tem certeza que quer apagar esse evento?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Essa ação não poderá ser desfeita. Os dados do evento serão perdidos.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>cancelar</AlertDialogCancel>
+              <AlertDialogAction onClick={handleDelete} variant='destructive'>
+                sim, quero apagar esse evento
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <MenuItem onClick={handleEdit}>editar</MenuItem>
       </Menu>
     </div>
   );

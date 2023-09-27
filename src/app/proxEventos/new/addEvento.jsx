@@ -7,6 +7,7 @@ import Link from "next/link";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { create } from "@/actions/eventos";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 
 export default function FormEvento(){
 
@@ -18,7 +19,7 @@ export default function FormEvento(){
             setError(resp.message)
             return
         }
-        setError("Cadastrado com sucesso")
+        redirect('/')
      }
 
 
