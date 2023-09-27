@@ -1,13 +1,12 @@
 "use server"
 
+
 import { revalidatePath } from "next/cache"
 
-const url = "http://localhost:8080/api/eventos"
-
+const url = process.env.NEXT_PUBLIC_BASE_URL + "/contas"
 export async  function create(formData){
 
     console.log(formData)
-
 
     const options = {
         method: "POST",
@@ -30,6 +29,15 @@ export async  function create(formData){
     return {ok: 'ok'}
 
 }
+
+export async function getEventos() {
+    const resp = await fetch(url)
+    if (!resp.ok){
+        throw new Error("Erro ao obter dados dos eventos")
+    }
+
+    return resp.json()
+  }
 
 
 export async function getEventos() {
