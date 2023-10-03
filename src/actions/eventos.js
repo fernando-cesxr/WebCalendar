@@ -2,6 +2,7 @@
 
 
 import { revalidatePath } from "next/cache"
+import { cookies } from "next/headers"
 
 const url = process.env.NEXT_PUBLIC_BASE_URL + "/contas"
 export async  function create(formData){
@@ -31,17 +32,15 @@ export async  function create(formData){
 }
 
 export async function getEventos() {
-    const resp = await fetch(url)
-    if (!resp.ok){
-        throw new Error("Erro ao obter dados dos eventos")
+    const token = cookies().get('dindin_token')
+
+    const options = {
+        headers: {
+            "Authorization": `Bearer ${token.value}`
+        }
     }
 
-    return resp.json()
-  }
-
-
-export async function getEventos() {
-    const resp = await fetch(url)
+    const resp = await fetch(url, options)
     if (!resp.ok){
         throw new Error("Erro ao obter dados dos eventos")
     }

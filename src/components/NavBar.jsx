@@ -13,9 +13,15 @@ export default function NavBar({active}){
           <li><Link href="/meses" className={active=="meses" && "text-slate-100"}>Meses</Link></li>
         </ul>
     
-        <div className="h-11 w-11 rounded-full overflow-hidden">
-          <img src="https://i.pravatar.cc/100" alt="avatar do usuario"/>
-        </div>
+        <div className="flex items-center gap-2">
+                <span>{user?.email}</span>
+
+                <div className="h-12 w-12 rounded-full overflow-hidden">
+                    <img src="https://i.pravatar.cc/100" alt="avatar do usuário" />
+                </div>
+
+                <Button onClick={handleLogout} type="button">logout</Button>
+            </div>
       </nav>
     )
 }
